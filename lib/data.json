@@ -1,0 +1,23 @@
+{
+    "cmd":"esc/tspl/cpcl",
+    "pageWidget":58,
+    "pageHeigh":40,
+    "offset":{
+        "x":0,
+        "y":0
+    },
+    "lines":[
+        {
+            "content":[
+                {
+                    "content":"content",
+                    "flex":0,
+                    "alght":"left/center/right"
+                }
+            ],
+            "font":"1",
+            "bold":true,
+            "type":"text/newLine/cut/cash"
+        }
+    ]
+}
