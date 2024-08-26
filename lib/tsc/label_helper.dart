@@ -15,12 +15,34 @@ class LabelHelper {
     LabelCommand cmd = LabelCommand();
     cmd.addStr("CLS \r\n");
     cmd.addSize(40, 30);
-    cmd.addText(no, offsetX, offsetY, font: "5");
-    cmd.addText(separator * (40 * 8 * 2 ~/ 24), offsetX, offsetY + 50);
-    cmd.addText(name, offsetX, offsetY + 70, font: "TSS24.BF2", scale: 2);
-    cmd.addText(specification, offsetX, offsetY + 130, font: "TSS24.BF2");
-    cmd.addText(separator * (40 * 8 * 2 ~/ 24), offsetX, offsetY + 170);
-    cmd.addText(date, offsetX, 210, font: "1");
+    cmd.addText("#${no}", offsetX, offsetY, font: "SS24.BF", scale: 2);
+    cmd.addText(separator * 24, offsetX, offsetY + 50);
+    cmd.addText(name, offsetX, offsetY + 80, font: "TSS24.BF2", scale: 2);
+    cmd.addText(specification, offsetX, offsetY + 140, font: "TSS24.BF2");
+    cmd.addText(separator * 24, offsetX, offsetY + 170);
+    cmd.addText(date, offsetX, offsetY + 190, font: "TSS24.BF2");
+    cmd.addPrint();
+    return cmd.command;
+  }
+
+  static Uint8List build6040Tspl({
+    required String no,
+    required String name,
+    required String specification,
+    required String date,
+    String separator = "-",
+    int offsetX = 0,
+    int offsetY = 0,
+  }) {
+    LabelCommand cmd = LabelCommand();
+    cmd.addStr("CLS \r\n");
+    cmd.addSize(60, 40);
+    cmd.addText("#${no}", offsetX, offsetY, font: "SS24.BF", scale: 2);
+    cmd.addText(separator * 36, offsetX, offsetY + 50);
+    cmd.addText(name, offsetX, offsetY + 80, font: "TSS24.BF2", scale: 2);
+    cmd.addText(specification, offsetX, offsetY + 140, font: "TSS24.BF2");
+    cmd.addText(separator * 36, offsetX, offsetY + 230);
+    cmd.addText(date, offsetX, offsetY + 250, font: "TSS24.BF2");
     cmd.addPrint();
     return cmd.command;
   }
@@ -43,14 +65,45 @@ class LabelHelper {
     cmd.addStr("LEFT\r\n");
     cmd.addStr('TEXT 4 1 $offsetX ${offsetY + 0} #$no\r\n');
     cmd.addStr("SETBOLD 0\r\n");
-    cmd.addStr('TEXT 6 0 $offsetX ${offsetY + 40} ${separator * 30}\r\n');
+    cmd.addStr('TEXT 4 0 $offsetX ${offsetY + 60} ${separator * 18}\r\n');
     cmd.addStr("SETBOLD 1\r\n");
-    cmd.addStr('TEXT 4 0 $offsetX ${offsetY + 70} $name\r\n');
+    cmd.addStr('TEXT 4 0 $offsetX ${offsetY + 90} $name\r\n');
     cmd.addStr("SETBOLD 0\r\n");
-    cmd.addStr('TEXT 6 0 $offsetX ${offsetY + 120} $specification\r\n');
+    cmd.addStr('TEXT 2 1 $offsetX ${offsetY + 130} $specification\r\n');
     cmd.addStr("SETBOLD 0\r\n");
-    cmd.addStr('TEXT 6 0 $offsetX ${offsetY + 140} ${separator * 30}\r\n');
-    cmd.addStr('TEXT 5 0 $offsetX ${offsetY + 160} $date\r\n');
+    cmd.addStr('TEXT 4 0 $offsetX ${offsetY + 155} ${separator * 18}\r\n');
+    cmd.addStr('TEXT 5 0 $offsetX ${offsetY + 175} $date\r\n');
+    cmd.addStr("FORM\r\n");
+    cmd.addStr("PRINT\r\n");
+    return cmd.command;
+  }
+
+  static Uint8List build6040Cpcl({
+    required String no,
+    required String name,
+    required String specification,
+    required String date,
+    String separator = "-",
+    int offsetX = 0,
+    int offsetY = 0,
+  }) {
+    LabelCommand cmd = LabelCommand();
+    cmd.addStr("! 0 200 200 300 1\r\n");
+    cmd.addStr("PW 400\r\n");
+    cmd.addStr("TONE 0\r\n");
+    cmd.addStr("SPEED 4\r\n");
+    cmd.addStr("SETBOLD 0\r\n");
+    cmd.addStr("LEFT\r\n");
+    cmd.addStr('TEXT 4 1 $offsetX ${offsetY + 0} #$no\r\n');
+    cmd.addStr("SETBOLD 0\r\n");
+    cmd.addStr('TEXT 4 0 $offsetX ${offsetY + 60} ${separator * 32}\r\n');
+    cmd.addStr("SETBOLD 1\r\n");
+    cmd.addStr('TEXT 4 0 $offsetX ${offsetY + 90} $name\r\n');
+    cmd.addStr("SETBOLD 0\r\n");
+    cmd.addStr('TEXT 2 1 $offsetX ${offsetY + 140} $specification\r\n');
+    cmd.addStr("SETBOLD 0\r\n");
+    cmd.addStr('TEXT 4 0 $offsetX ${offsetY + 230} ${separator * 32}\r\n');
+    cmd.addStr('TEXT 2 1 $offsetX ${offsetY + 250} $date\r\n');
     cmd.addStr("FORM\r\n");
     cmd.addStr("PRINT\r\n");
     return cmd.command;
