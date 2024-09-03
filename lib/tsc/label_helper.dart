@@ -15,7 +15,7 @@ class LabelHelper {
     LabelCommand cmd = LabelCommand();
     cmd.addStr("CLS \r\n");
     cmd.addSize(40, 30);
-    cmd.addText("#${no}", offsetX, offsetY, font: "SS24.BF", scale: 2);
+    cmd.addText("#${no}", offsetX, offsetY, font: "TSS24.BF2", scale: 2);
     cmd.addText(separator * 24, offsetX, offsetY + 50);
     cmd.addText(name, offsetX, offsetY + 80, font: "TSS24.BF2", scale: 2);
     cmd.addText(specification, offsetX, offsetY + 140, font: "TSS24.BF2");
@@ -37,7 +37,7 @@ class LabelHelper {
     LabelCommand cmd = LabelCommand();
     cmd.addStr("CLS \r\n");
     cmd.addSize(60, 40);
-    cmd.addText("#${no}", offsetX, offsetY, font: "SS24.BF", scale: 2);
+    cmd.addText("#${no}", offsetX, offsetY, font: "TSS24.BF2", scale: 2);
     cmd.addText(separator * 36, offsetX, offsetY + 50);
     cmd.addText(name, offsetX, offsetY + 80, font: "TSS24.BF2", scale: 2);
     cmd.addText(specification, offsetX, offsetY + 140, font: "TSS24.BF2");
